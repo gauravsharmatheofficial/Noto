@@ -34,7 +34,7 @@ function Signup() {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-purple-50 via-orange-50  to-transparent p-3">
-        <div className=" p-6 max-w-sm sm:min-w-md bg-white sm:p-10 rounded-[30px] drop-shadow-2xl">
+        <div className=" p-6  w-full sm:max-w-[400px] bg-white sm:p-10 rounded-[30px] drop-shadow-2xl">
           <h1 className="text-2xl font-semibold text-center">
             Create an account
           </h1>

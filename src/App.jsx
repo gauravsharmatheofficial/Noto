@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import CreateNote from "./pages/CreateNote";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
 import SingleNote from "./pages/SingleNote";
+import Navbar from "./components/Navbar";
 
 // export let authContext = useContext();
 function App() {
@@ -22,6 +23,7 @@ function App() {
       {/* <Login /> */}
       {/* <Note /> */}
       {/* <Home /> */}
+      <Navbar />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />

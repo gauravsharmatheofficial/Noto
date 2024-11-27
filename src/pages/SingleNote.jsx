@@ -68,8 +68,8 @@ function SingleNote() {
   };
   return (
     <>
-      <div className="bg-gray-100 p-5 gap-5 h-screen flex flex-col items-center  ">
-        <div className="flex justify-between mb-5 w-2/4">
+      <div className="min-h-screen bg-gradient-to-br from-purple-50 via-orange-50  to-transparent p-3 gap-5 h-screen flex flex-col items-center  ">
+        <div className="flex justify-between mb-5 w-2/4 ">
           <FaAngleLeft className="bg-white rounded-full p-1 size-6" />
           <div className="flex gap-2 ">
             <FaCheck
@@ -82,11 +82,11 @@ function SingleNote() {
             />
           </div>
         </div>
-        <form className="flex flex-col bg-white rounded-md w-2/4">
+        <form className="flex flex-col bg-white rounded-md w-2/4 drop-shadow-2xl">
           <input
             type="text"
             placeholder="title"
-            className="p-3 rounded-md bg-transparent"
+            className="p-3 text-2xl font-bold focus:outline-none focus:ring-0 rounded-md bg-transparent"
             value={title}
             onChange={(e) => {
               setTitle(e.target.value);
@@ -95,7 +95,7 @@ function SingleNote() {
           <p className="p-3">25-11-2024</p>
           <textarea
             placeholder="description"
-            className="p-3 rounded-md bg-transparent"
+            className="p-3 rounded-md bg-transparent text-gray-800 focus:outline-none focus:ring-0"
             rows={12}
             value={desc}
             onChange={(e) => {
