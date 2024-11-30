@@ -1,14 +1,57 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
+// Firebase
+import {
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import { auth, googelProvider } from "../config/firebaseInit";
+
 // 1st create context
 const AuthContext = createContext();
 
-const AuthProvider = (props) => {
+export const AuthProvider = (props) => {
   const [loading, SetLoading] = useState(false);
   const [user, setUser] = useState();
+
+  // Register With Email And Password
+  const signupWithEmailAndPassword = async (email, password) => {
+    createUserWithEmailAndPassword(auth, email, password);
+  };
+
+  const loginWithEmailAndPassword = async (email, password) => {
+    signInWithEmailAndPassword(auth, email, password);
+  };
+
+  const resetPassword = async (email) => {
+    sendPasswordResetEmail(auth, email);
+  };
+
+  const loginWithGoogle = async () => {
+    signInWithPopup(auth, googelProvider);
+  };
+
+  const logout = () => {
+    return signOut(firebaseAuth);
+  };
+
+  return (
+    <AuthContext.Provider
+      value={{
+        signupWithEmailAndPassword,
+        loginWithEmailAndPassword,
+        resetPassword,
+        loginWithGoogle,
+        logout,
+      }}
+    >
+      {!loading && props.children}
+    </AuthContext.Provider>
+  );
 };
 
-// Register With Email And Password
-const signupWithEmailAndPassword=()=>{
-    
-}
+// 3rd Step -> Custom Hook
+export const useAuth = () => useContext(AuthContext);

@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
+import { GoogleAuthProvider } from "firebase/auth/web-extension";
 import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -13,7 +14,17 @@ const firebaseConfig = {
   appId: import.meta.env.VITE_APPID,
 };
 
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
+
+// Initialize Cloud Firestore and get a reference to the service
+// FireStore Instance
 const db = getFirestore(app);
+
+// Firebase instance
 const auth = getAuth(app);
-export { auth, app, db };
+
+// instance of the Google provider object
+const googelProvider = new GoogleAuthProvider();
+
+export { auth, app, db, googelProvider };
