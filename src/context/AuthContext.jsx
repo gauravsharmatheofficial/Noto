@@ -8,7 +8,7 @@ import {
   signInWithPopup,
   signOut,
 } from "firebase/auth";
-import { auth, googelProvider } from "../config/firebaseInit";
+import { auth, googleProvider } from "../config/firebaseInit";
 
 // 1st create context
 const AuthContext = createContext();
@@ -31,7 +31,8 @@ export const AuthProvider = (props) => {
   };
 
   const loginWithGoogle = async () => {
-    signInWithPopup(auth, googelProvider);
+    console.log("signin with google... ");
+    signInWithPopup(auth, googleProvider);
   };
 
   const logout = () => {

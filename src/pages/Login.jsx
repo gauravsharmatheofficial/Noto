@@ -3,12 +3,14 @@ import { googleLogo } from "../assets/images";
 import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth } from "../config/firebaseInit";
 import { GoogleAuthProvider } from "firebase/auth/web-extension";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
   async function handleSubmit(e) {
     e.preventDefault();
     try {
