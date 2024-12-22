@@ -5,26 +5,10 @@ import { RiDeleteBin5Line } from "react-icons/ri";
 import { collection, addDoc, Timestamp } from "firebase/firestore";
 import { FaCheck } from "react-icons/fa6";
 import { db } from "../config/firebaseInit";
+import { useNote } from "../context/NotesContext";
 
 function createNote() {
-  const [title, setTitle] = useState("");
-  const [desc, setDesc] = useState("");
-
-  const handleSubmit = async (e) => {
-    e.preventDefault;
-    try {
-      await addDoc(collection(db, "notes"), {
-        title,
-        desc,
-        noteCreatedTime: Timestamp.now().toDate().toString(),
-      });
-    } catch (error) {
-      console.log("set doc error", error);
-    }
-
-    setTitle("");
-    setDesc("");
-  };
+  const { handleSubmit, title, desc, setTitle, setDesc } = useNote();
 
   return (
     <>

@@ -14,7 +14,8 @@ import { auth, googleProvider } from "../config/firebaseInit";
 const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
-  const [loading, SetLoading] = useState(false);
+  const [loading, SetLoading] = useState(false); 
+
   const [user, setUser] = useState();
 
   // Register With Email And Password

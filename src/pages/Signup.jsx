@@ -23,8 +23,8 @@ function Signup() {
     }
     navigate("/");
   }
-d
-  const provider = new GoogleAuthProvider();
+
+  // const provider = new GoogleAuthProvider();
   async function handleGoogle() {
     try {
       await loginWithGoogle();
