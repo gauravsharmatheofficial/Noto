@@ -28,7 +28,7 @@ function SingleNote() {
 
       if (docSnap.exists()) {
         setTitle(docSnap.data().title);
-        setDesc(docSnap.data().desc);
+        setDesc(docSnap.data().desc); 
       } else {
         // docSnap.data() will be undefined in this case
         console.log("No such document!");

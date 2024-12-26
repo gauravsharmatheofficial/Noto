@@ -3,20 +3,24 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 // Firebase
 import {
   createUserWithEmailAndPassword,
+  onAuthStateChanged,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
 } from "firebase/auth";
 import { auth, googleProvider } from "../config/firebaseInit";
+import { userDefaultImg } from "../assets/images/index";
 
 // 1st create context
 const AuthContext = createContext();
 
 export const AuthProvider = (props) => {
-  const [loading, SetLoading] = useState(false); 
+  const [loading, SetLoading] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userImg, setUserImg] = useState("");
 
-  const [user, setUser] = useState();
+  const [userLogin, setUserLogin] = useState(false);
 
   // Register With Email And Password
   const signupWithEmailAndPassword = async (email, password) => {
@@ -37,8 +41,27 @@ export const AuthProvider = (props) => {
   };
 
   const logout = () => {
-    return signOut(firebaseAuth);
+    signOut(auth)
+      .then(() => {
+        console.log("signout");
+        console.log(userLogin);
+      })
+      .catch((error) => {
+        console.log("error", error);
+      });
   };
+
+  const userIsLogedin = onAuthStateChanged(auth, (user) => {
+    if (user) {
+      setUserLogin(true);
+      setUserName(user.displayName);
+      setUserImg(user.photoURL || userDefaultImg);
+    } else {
+      setUserLogin(false);
+      setUserName("");
+      setUserImg("");
+    }
+  });
 
   return (
     <AuthContext.Provider
@@ -48,6 +71,9 @@ export const AuthProvider = (props) => {
         resetPassword,
         loginWithGoogle,
         logout,
+        userLogin,
+        userImg,
+        userName,
       }}
     >
       {!loading && props.children}

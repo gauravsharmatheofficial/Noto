@@ -27,7 +27,7 @@ function Login() {
 
   // const provider = new GoogleAuthProvider();
   async function handleGoogle() {
-    try {
+    try { 
       await loginWithGoogle();
     } catch (error) {
       console.log("login with google", error);

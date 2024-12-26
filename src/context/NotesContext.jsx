@@ -18,7 +18,7 @@ const NoteProvider = (props) => {
         let noteData = [];
         querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
-          // console.log(doc.data());
+          console.log(doc.data());
           noteData.push({ id: doc.id, ...doc.data() });
         });
 

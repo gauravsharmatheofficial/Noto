@@ -5,7 +5,13 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import CreateNote from "./pages/CreateNote";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import {
+  Route,
+  BrowserRouter,
+  Routes,
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 import SingleNote from "./pages/SingleNote";
 import Navbar from "./components/Navbar";
 
@@ -13,26 +19,58 @@ import Navbar from "./components/Navbar";
 function App() {
   const [islogin, setIsLogin] = useState(true);
 
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: (
+        <>
+          <Navbar /> <Home />
+        </>
+      ),
+    },
+    {
+      path: "/signup",
+      element: (
+        <>
+          <Navbar />
+          <Signup />
+        </>
+      ),
+    },
+    {
+      path: "/create-note",
+      element: (
+        <>
+          {" "}
+          <Navbar />
+          <CreateNote />
+        </>
+      ),
+    },
+    {
+      path: "/login",
+      element: (
+        <>
+          {" "}
+          <Navbar />
+          <Login />
+        </>
+      ),
+    },
+    {
+      path: "/note/:id",
+      element: (
+        <>
+          {" "}
+          <Navbar />
+          <SingleNote />
+        </>
+      ),
+    },
+  ]);
   return (
     <>
-      {/* <authContext.provider value={demo}> */}
-      {/* <SingleNote /> */}
-      {/* </authContext.provider> */}
-      {/* <Start /> */}
-      {/* <Signup /> */}
-      {/* <Login /> */}
-      {/* <Note /> */}
-      {/* <Home /> */}
-      <Navbar />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/create-note" element={<CreateNote />} />
-          <Route path="/signin" element={<Login />} />
-          <Route path="/single-note/:id" element={<SingleNote />} />
-        </Routes>
-      </BrowserRouter>
+      <RouterProvider router={router} />
     </>
   );
 }

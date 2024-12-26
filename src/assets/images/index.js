@@ -1,3 +1,3 @@
 import googleLogo from "./google-logo.png";
-
-export { googleLogo };
+import userDefaultImg from "./userDefaultImg.png";
+export { googleLogo, userDefaultImg };
