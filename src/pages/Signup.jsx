@@ -3,7 +3,7 @@ import { googleLogo } from "../assets/images";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth } from "../config/firebaseInit";
 import { GoogleAuthProvider } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
 function Signup() {
@@ -37,11 +37,14 @@ function Signup() {
   return (
     <>
       <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-purple-50 via-orange-50  to-transparent p-3">
-        <div className=" p-6  w-full sm:max-w-[400px] bg-white sm:p-10 rounded-[30px] drop-shadow-2xl">
-          <h1 className="text-2xl font-semibold text-center">
-            Create an account
-          </h1>
-          <p className="text-center text-gray-800 ">Already have an account?</p>
+        <div className=" p-6  w-full sm:max-w-[400px] text-center bg-white sm:p-10 rounded-[30px] drop-shadow-2xl">
+          <h1 className="text-2xl font-semibold ">Create an account</h1>
+          <Link
+            to="/login"
+            className="pt-2 text-gray-800 hover:text-orange-500 "
+          >
+            Already have an account?
+          </Link>
 
           <form className="pt-5 flex flex-col gap-3" onSubmit={handleSubmit}>
             <div>
