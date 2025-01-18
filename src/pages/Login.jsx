@@ -1,8 +1,5 @@
 import React, { useState } from "react";
 import { googleLogo } from "../assets/images";
-import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth } from "../config/firebaseInit";
-import { GoogleAuthProvider } from "firebase/auth/web-extension";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -10,10 +7,9 @@ function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const { loginWithEmailAndPassword, loginWithGoogle } = useAuth();
-
-  const navigate = useNavigate();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -106,7 +102,7 @@ function Login() {
           </form>
           <p className="text-center py-5  text-gray-800">---- or ----</p>
           <div
-            className="flex justify-center mx-auto border-slate-200 hover:bg-slate-50 text-gray-800 items-center gap-3 w-fit border-2 p-2 rounded-lg "
+            className="flex justify-center mx-auto border-slate-200 hover:bg-slate-50 text-gray-800 items-center gap-3 w-full border-2 p-2 rounded-lg "
             onClick={handleGoogle}
           >
             <img className="w-6 " src={googleLogo} alt="Google Logo" />

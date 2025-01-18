@@ -103,7 +103,7 @@ function Signup() {
           </form>
           <p className="text-center py-5  text-gray-800">---- or ----</p>
           <div
-            className="flex justify-center mx-auto border-slate-200 hover:bg-slate-50 text-gray-800 items-center gap-3 w-fit border-2 p-2 rounded-lg "
+            className="flex justify-center mx-auto border-slate-200 hover:bg-slate-50 text-gray-800 items-center gap-3 w-full border-2 p-2 rounded-lg "
             onClick={handleGoogle}
           >
             <img className="w-6 " src={googleLogo} alt="Google Logo" />

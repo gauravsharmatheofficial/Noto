@@ -14,63 +14,53 @@ import {
 } from "react-router-dom";
 import SingleNote from "./pages/SingleNote";
 import Navbar from "./components/Navbar";
+import { useAuth } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // export let authContext = useContext();
 function App() {
-  const [islogin, setIsLogin] = useState(true);
+  const { userLogin } = useAuth();
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: (
-        <>
-          <Navbar /> <Home />
-        </>
-      ),
-    },
-    {
-      path: "/signup",
-      element: (
-        <>
-          <Navbar />
-          <Signup />
-        </>
-      ),
-    },
-    {
-      path: "/create-note",
-      element: (
-        <>
-          {" "}
-          <Navbar />
-          <CreateNote />
-        </>
-      ),
-    },
-    {
-      path: "/login",
-      element: (
-        <>
-          {" "}
-          <Navbar />
-          <Login />
-        </>
-      ),
-    },
-    {
-      path: "/note/:id",
-      element: (
-        <>
-          {" "}
-          <Navbar />
-          <SingleNote />
-        </>
-      ),
-    },
-  ]);
   return (
     <>
-      <RouterProvider router={router} />
+      <BrowserRouter>
+        <Navbar />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <ProtectedRoute>
+                <Signup />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/create-note"
+            element={
+              <ProtectedRoute>
+                <CreateNote />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/login" element={<Login />} />
+          <Route
+            path="/note/:id"
+            element={
+              <ProtectedRoute>
+                <SingleNote />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
