@@ -28,7 +28,7 @@ function NoteCard({ note }) {
 
   return (
     <>
-      <div className="bg-orange-200 p-6 min-h-40 rounded-3xl flex flex-col justify-between	">
+      <div className="bg-orange-200 p-6 min-h-40 rounded-3xl flex flex-col justify-between">
         <div className="">
           <h1 className="text-xl font-bold text-gray-950 ">{note.title}</h1>
           <p className="text-gray-800 ">
@@ -37,15 +37,13 @@ function NoteCard({ note }) {
         </div>
         <div className="flex justify-between items-center mt-5">
           <div className="flex justify-between text-sm items-center gap-2 bg-white px-3 h-9 rounded-full">
-            {" "}
             <FaRegClock />
             <p>{finalTime}</p>
           </div>
 
           <div className="flex gap-3 ">
-            {" "}
             <Link to={`/single-note/${note.id}`}>
-              <PiPencilLine className="bg-white  hover:bg-orange-400 hover:text-white hover:scale-110 hover:transition hover:duration-100 hover:ease-in-out rounded-full p-2 size-9" />
+              <PiPencilLine className="bg-white  hover:bg-orange-400 hover:text-white hover:scale-110 hover:transition hover:duration-100 hover:ease-in-out rounded-full p-2 size-9"/>
             </Link>
             <RiDeleteBin5Line
               className="bg-white rounded-full p-2 size-9  hover:cursor-pointer hover:bg-orange-400 hover:text-white hover:scale-110 hover:transition hover:duration-100 hover:ease-in-out"
