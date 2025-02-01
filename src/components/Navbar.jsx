@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext";
 // import { user } from "../assets/images/index";
 
 function Navbar() {
-  const { userLogin, logout, userName, userImg } = useAuth();
+  const { logout, activeUser } = useAuth();
   return (
     <>
       <div className="flex gap-5 py-2 px-4 items-center justify-between">
@@ -32,20 +32,28 @@ function Navbar() {
 
         <div className="flex gap-4 items-center">
           <div
-            className={`flex gap-4 items-center ${userLogin ? "hidden" : ""}`}
+            className={`flex gap-4 items-center ${activeUser ? "hidden" : ""}`}
           >
             <NavLink to="/login">Login</NavLink>
             <NavLink to="/signup">Signup</NavLink>
           </div>
           <div
-            className={`"flex gap-4 items-center" ${userLogin ? "" : "hidden"} `}
+            className={`"flex gap-4 items-center" ${activeUser ? "" : "hidden"} `}
             onClick={logout}
           >
             Logout
           </div>
 
-          <div className={`${userLogin ? "" : "hidden"}`}>
-            <img className="w-6" src={userImg} alt="User Profile" />
+          <div className={`${activeUser ? "" : "hidden"}`}>
+            {activeUser && activeUser.photoURL ? (
+              <img
+                className="w-6 rounded-full"
+                src={activeUser.photoURL}
+                alt="User Profile"
+              />
+            ) : (
+              <span className="text-gray-500">No Image</span>
+            )}
           </div>
         </div>
       </div>
